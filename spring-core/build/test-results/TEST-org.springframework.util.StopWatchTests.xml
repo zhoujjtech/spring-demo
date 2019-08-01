@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.springframework.util.StopWatchTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-07-23T02:43:51" hostname="zhoujiajundeMacBook-Pro.local" time="0.44">
+  <properties/>
+  <testcase name="failureToStartBeforeStop" classname="org.springframework.util.StopWatchTests" time="0.001"/>
+  <testcase name="validUsageNotKeepingTaskList" classname="org.springframework.util.StopWatchTests" time="0.218"/>
+  <testcase name="rejectsStartTwice" classname="org.springframework.util.StopWatchTests" time="0.0"/>
+  <testcase name="validUsage" classname="org.springframework.util.StopWatchTests" time="0.22"/>
+  <testcase name="failureToStartBeforeGettingTimings" classname="org.springframework.util.StopWatchTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
