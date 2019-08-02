@@ -56,6 +56,7 @@ import org.springframework.beans.factory.CannotLoadBeanClassException;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.SmartFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.config.BeanExpressionContext;
@@ -235,6 +236,14 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @return an instance of the bean
 	 * @throws BeansException if the bean could not be created
 	 */
+	// TODO: 2019-08-02 类似一种递归的过程, 先把B实例化完成
+	/**
+	 *  Class A {
+	 *      @Autowired
+	 *  	private B b;
+	 *  }
+	 *
+	 */
 	@SuppressWarnings("unchecked")
 	protected <T> T doGetBean(final String name, @Nullable final Class<T> requiredType,
 			@Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
@@ -248,8 +257,8 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		// Eagerly check singleton ca che for manually registered singletons.
 		// TODO: 2019-08-01 这个地方会使用到 singletonsCurrentlyInCreation 和 singletonFactories
 		//  设置完毕之后就会把singletonFactories中的beanName移除, 添加到 earlySingletonObjects 中去
+		//  起到了解决属性循环引用的问题
  		Object sharedInstance = getSingleton(beanName);
-		// TODO: 2019-08-01 处理factoryBean的获取实例
 		if (sharedInstance != null && args == null) {
 			if (logger.isDebugEnabled()) {
 				if (isSingletonCurrentlyInCreation(beanName)) {
@@ -260,6 +269,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 					logger.debug("Returning cached instance of singleton bean '" + beanName + "'");
 				}
 			}
+			// TODO: 2019-08-01 处理1. factoryBean的获取实例(getObject()), 2. 获取普通实例
 			bean = getObjectForBeanInstance(sharedInstance, name, beanName, null);
 		}
        // TODO: 2019-08-01 进行实例进行创建的过程
@@ -319,9 +329,16 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 				// Create bean instance.
 				if (mbd.isSingleton()) {
-					// TODO: 2019-08-01 1.先添加到singletonsCurrentlyInCreation 2.再添加到singletonFactories 3.属性填充完成,最后添加singletonObjects
+					// TODO: 2019-08-01 1.先添加到singletonsCurrentlyInCreation
+					//                  2.再添加到singletonFactories
+					//                  3.属性填充完成,
+					//                  4.最后添加singletonObjects
 					sharedInstance = getSingleton(beanName, () -> {
 						try {
+							// TODO: 2019-08-02 真正创建的过程
+							//  	1. 调用构造方法
+							//  	2. 属性填充(进行循环引用的处理)
+							//  	3. 后置处理BeanPostProcessor
 							return createBean(beanName, mbd, args);
 						}
 						catch (BeansException ex) {
@@ -1663,6 +1680,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				mbd = getMergedLocalBeanDefinition(beanName);
 			}
 			boolean synthetic = (mbd != null && mbd.isSynthetic());
+			// TODO: 2019-08-02 真正获取创建的对象
 			object = getObjectFromFactoryBean(factory, beanName, !synthetic);
 		}
 		return object;

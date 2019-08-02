@@ -12,7 +12,7 @@ public class BootApplication {
 //        context.addBeanFactoryPostProcessor(new IndexBeanFactoryPostProcessor());
         context.refresh();
 //        context.scan("com.zhoujjtech");
-        Object bean = context.getBean("indexDaoMapper");
+        Object bean = context.getBean("indexFactoryBean");
 //        System.out.println(bean.toString());
 //        System.out.println(context.getBean(IndexService.class));
 

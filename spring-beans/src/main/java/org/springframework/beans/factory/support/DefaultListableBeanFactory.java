@@ -944,6 +944,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		else {
 			// Still in startup registration phase
 			if (!this.beanDefinitionMap.containsKey(beanName)) {
+				// TODO: 2019-08-02 手动添加的bean实例
 				this.manualSingletonNames.add(beanName);
 			}
 		}
