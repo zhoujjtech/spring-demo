@@ -13,10 +13,10 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.Random;
 
 
-@Configuration
+//@Configuration
 //@EnableDubboConfig
-@DubboComponentScan(basePackages = "com.zhoujjtech.dubbo")
-@PropertySource("classpath:/application.properties")
+//@DubboComponentScan(basePackages = "com.zhoujjtech.dubbo")
+//@PropertySource("classpath:/application.properties")
 public class DubboConfig {
 
     @Value("${dubbo.registry.address}")

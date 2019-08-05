@@ -5,7 +5,7 @@ import com.zhoujjtech.dubbo.facade.IndexFacade;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class IndexComsumer {
 
     @Reference
