@@ -13,6 +13,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 
@@ -21,8 +26,18 @@ import javax.sql.DataSource;
 //@MapperScan("com.zhoujjtech.dao")
 //@EnableAspectJAutoProxy
 //@EnableDone("com.zhoujjtech.dao")
-@EnableDubbo(scanBasePackages="com.zhoujjtech")
-public class AppConfig {
+//@EnableDubbo(scanBasePackages="com.zhoujjtech")
+//@EnableWebMvc
+public class AppConfig implements WebMvcConfigurer {
+
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+        internalResourceViewResolver.setPrefix("/");
+        internalResourceViewResolver.setSuffix(".html");
+        registry.viewResolver(internalResourceViewResolver);
+    }
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
