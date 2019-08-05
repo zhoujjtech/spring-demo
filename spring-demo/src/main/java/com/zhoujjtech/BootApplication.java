@@ -2,6 +2,7 @@ package com.zhoujjtech;
 
 import com.zhoujjtech.config.AppConfig;
 import com.zhoujjtech.dao.IndexDaoMapper;
+import com.zhoujjtech.dubbo.consumer.IndexComsumer;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -19,9 +20,12 @@ public class BootApplication {
 //        context.addBeanFactoryPostProcessor(new IndexBeanFactoryPostProcessor());
         context.refresh();
 //        context.scan("com.zhoujjtech");
-        Object bean = context.getBean("indexFactoryBean");
+//        Object bean = context.getBean("indexFactoryBean");
 //        System.out.println(bean.toString());
 //        System.out.println(context.getBean(IndexService.class));
+/*        IndexComsumer comsumer = context.getBean(IndexComsumer.class);
+        comsumer.sayHello();*/
+        context.start();
     }
 
     public static void runContainer() {

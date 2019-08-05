@@ -27,8 +27,7 @@ import javax.sql.DataSource;
 @ComponentScan("com.zhoujjtech")
 //@MapperScan("com.zhoujjtech.dao")
 //@EnableAspectJAutoProxy
-@EnableDone("com.zhoujjtech.dao")
-//@EnableDubbo(scanBasePackages="com.zhoujjtech")
+//@EnableDone("com.zhoujjtech.dao")
 //@EnableWebMvc
 public class AppConfig implements WebMvcConfigurer {
 

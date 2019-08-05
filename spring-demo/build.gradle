@@ -19,7 +19,7 @@ dependencies {
     compile 'org.mybatis:mybatis-spring:2.0.2'
     compile 'org.mybatis:mybatis:3.5.0'
     compile 'mysql:mysql-connector-java:5.1.35'
-    compile 'com.alibaba:dubbo:2.5.8'
+    compile group: 'org.apache.dubbo', name: 'dubbo', version: '2.7.1'
 //    compile 'com.weidai.asscenter:asscenter-common-service-facade:1.8.2'
 //    slf4j
     compile 'org.slf4j:slf4j-api:1.7.26'
@@ -29,4 +29,5 @@ dependencies {
     compile 'org.aspectj:aspectjweaver:1.8.14'
     provided group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.43'
+    compile 'org.apache.dubbo:dubbo-dependencies-zookeeper:2.7.1'
 }
