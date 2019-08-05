@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.springframework.oxm.castor.CastorUnmarshallerTests" tests="22" skipped="1" failures="0" errors="0" timestamp="2019-07-23T02:55:23" hostname="zhoujiajundeMacBook-Pro.local" time="0.242">
+<testsuite name="org.springframework.oxm.castor.CastorUnmarshallerTests" tests="22" skipped="1" failures="0" errors="0" timestamp="2019-08-05T02:22:42" hostname="zhoujiajundeMacBook-Pro.local" time="0.416">
   <properties/>
-  <testcase name="unmarshalSaxSourceWithXmlOptions" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.01"/>
-  <testcase name="ignoreExtraElementsFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.008"/>
-  <testcase name="unmarshalTargetClass" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.009"/>
+  <testcase name="unmarshalSaxSourceWithXmlOptions" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.015"/>
+  <testcase name="ignoreExtraElementsFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.028"/>
+  <testcase name="unmarshalTargetClass" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.038"/>
   <testcase name="ignoreExtraElementsTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="whitespacePreserveFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.007"/>
-  <testcase name="rootObject" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.006"/>
-  <testcase name="setBothTargetClassesAndMapping" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.011"/>
-  <testcase name="clearCollectionsFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.007"/>
-  <testcase name="ignoreExtraAttributesTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.008"/>
-  <testcase name="whitespacePreserveTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.011"/>
-  <testcase name="unmarshalStreamSourceWithXmlOptions" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.01"/>
-  <testcase name="clearCollectionsTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.008"/>
-  <testcase name="ignoreExtraAttributesFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.013"/>
-  <testcase name="unmarshalStreamSourceReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.01"/>
-  <testcase name="unmarshalJaxp14StaxSourceXmlEventReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.028"/>
-  <testcase name="unmarshalPartialStaxSourceXmlStreamReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.008"/>
-  <testcase name="unmarshalStaxSourceXmlStreamReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.018"/>
-  <testcase name="unmarshalSAXSource" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.009"/>
-  <testcase name="unmarshalStreamSourceInputStream" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.008"/>
-  <testcase name="unmarshalJaxp14StaxSourceXmlStreamReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.011"/>
-  <testcase name="unmarshalStaxSourceXmlEventReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.022"/>
-  <testcase name="unmarshalDomSource" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.01"/>
+  <testcase name="whitespacePreserveFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.015"/>
+  <testcase name="rootObject" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.012"/>
+  <testcase name="setBothTargetClassesAndMapping" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.032"/>
+  <testcase name="clearCollectionsFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.011"/>
+  <testcase name="ignoreExtraAttributesTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.021"/>
+  <testcase name="whitespacePreserveTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.01"/>
+  <testcase name="unmarshalStreamSourceWithXmlOptions" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.018"/>
+  <testcase name="clearCollectionsTrue" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.018"/>
+  <testcase name="ignoreExtraAttributesFalse" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.023"/>
+  <testcase name="unmarshalStreamSourceReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.012"/>
+  <testcase name="unmarshalJaxp14StaxSourceXmlEventReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.06"/>
+  <testcase name="unmarshalPartialStaxSourceXmlStreamReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.015"/>
+  <testcase name="unmarshalStaxSourceXmlStreamReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.012"/>
+  <testcase name="unmarshalSAXSource" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.01"/>
+  <testcase name="unmarshalStreamSourceInputStream" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.012"/>
+  <testcase name="unmarshalJaxp14StaxSourceXmlStreamReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.014"/>
+  <testcase name="unmarshalStaxSourceXmlEventReader" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.011"/>
+  <testcase name="unmarshalDomSource" classname="org.springframework.oxm.castor.CastorUnmarshallerTests" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

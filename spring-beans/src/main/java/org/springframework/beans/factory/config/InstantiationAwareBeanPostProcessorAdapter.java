@@ -38,6 +38,7 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  * @since 2.0
  */
+// TODO: 2019-08-05 插手实例化的过程 实例化 --> 初始化
 public abstract class InstantiationAwareBeanPostProcessorAdapter implements SmartInstantiationAwareBeanPostProcessor {
 
 	@Override

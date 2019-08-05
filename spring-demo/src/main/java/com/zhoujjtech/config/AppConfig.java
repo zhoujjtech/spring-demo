@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 //@MapperScan("com.zhoujjtech.dao")
 //@EnableAspectJAutoProxy
 //@EnableDone("com.zhoujjtech.dao")
-//@EnableDubbo(scanBasePackages="com.zhoujjtech")
+@EnableDubbo(scanBasePackages="com.zhoujjtech")
 public class AppConfig {
 
     @Bean

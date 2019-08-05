@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.springframework.oxm.config.OxmNamespaceHandlerTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-23T02:55:24" hostname="zhoujiajundeMacBook-Pro.local" time="0.051">
+<testsuite name="org.springframework.oxm.config.OxmNamespaceHandlerTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-08-05T02:22:43" hostname="zhoujiajundeMacBook-Pro.local" time="0.048">
   <properties/>
   <testcase name="jaxb2ClassesToBeBoundMarshaller" classname="org.springframework.oxm.config.OxmNamespaceHandlerTests" time="0.0"/>
   <testcase name="jaxb2ContextPathMarshaller" classname="org.springframework.oxm.config.OxmNamespaceHandlerTests" time="0.0"/>

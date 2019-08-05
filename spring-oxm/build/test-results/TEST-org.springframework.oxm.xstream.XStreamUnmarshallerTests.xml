@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.springframework.oxm.xstream.XStreamUnmarshallerTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-07-23T02:55:26" hostname="zhoujiajundeMacBook-Pro.local" time="0.017">
+<testsuite name="org.springframework.oxm.xstream.XStreamUnmarshallerTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-08-05T02:22:45" hostname="zhoujiajundeMacBook-Pro.local" time="0.015">
   <properties/>
-  <testcase name="unmarshalStreamSourceReader" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.003"/>
-  <testcase name="unmarshalStaxSourceXmlStreamReader" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.004"/>
+  <testcase name="unmarshalStreamSourceReader" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.002"/>
+  <testcase name="unmarshalStaxSourceXmlStreamReader" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.003"/>
   <testcase name="unmarshalStreamSourceInputStream" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.003"/>
-  <testcase name="unmarshalDomSource" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.007"/>
+  <testcase name="unmarshalDomSource" classname="org.springframework.oxm.xstream.XStreamUnmarshallerTests" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[Security framework of XStream not initialized, XStream is probably vulnerable.
 Security framework of XStream not initialized, XStream is probably vulnerable.
