@@ -16,11 +16,7 @@ public class OrderService {
 ////        log.info("构造方法...");
 //    }
 
-    @Autowired
-    private IndexService indexService;
+/*    @Autowired
+    private IndexService indexService;*/
 
-    @PostConstruct
-    public void init() {
-        log.info("初始化方法....");
-    }
 }

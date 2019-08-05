@@ -574,9 +574,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// Initialize the bean instance.
 		Object exposedObject = bean;
 		try {
-			// TODO: 2019-07-30 属性填充, 后置处理器
+			// TODO: 2019-07-30 属性填充, 也是实例化过程的一部分 instantiation InstantiationAwareBeanPostProcessor中的postProcessPropertyValues
 			populateBean(beanName, mbd, instanceWrapper);
-			//todo: 执行后置处理器
+			//todo: 初始化的部分, 方法回调
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
 		}
 		catch (Throwable ex) {
@@ -1702,12 +1702,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 		Object wrappedBean = bean;
 		if (mbd == null || !mbd.isSynthetic()) {
-			// TODO: 2019-07-31 初始化before
+			// TODO: 2019-07-31 初始化before @PostConstruct  Initialization
 			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 		}
 
 		try {
-			//todo: 生命周期方法
+			//todo: 生命周期方法 afterPropertiesSet, @Bean(initMethod)
 			invokeInitMethods(beanName, wrappedBean, mbd);
 		}
 		catch (Throwable ex) {

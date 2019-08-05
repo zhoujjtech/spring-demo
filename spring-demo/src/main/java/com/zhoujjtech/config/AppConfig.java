@@ -6,6 +6,8 @@ import com.mysql.jdbc.Driver;
 import com.zhoujjtech.annotation.EnableDone;
 import com.zhoujjtech.service.IndexService;
 import com.zhoujjtech.service.OrderService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -25,11 +27,12 @@ import javax.sql.DataSource;
 @ComponentScan("com.zhoujjtech")
 //@MapperScan("com.zhoujjtech.dao")
 //@EnableAspectJAutoProxy
-//@EnableDone("com.zhoujjtech.dao")
+@EnableDone("com.zhoujjtech.dao")
 //@EnableDubbo(scanBasePackages="com.zhoujjtech")
 //@EnableWebMvc
 public class AppConfig implements WebMvcConfigurer {
 
+    private Log log = LogFactory.getLog(getClass());
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -59,7 +62,7 @@ public class AppConfig implements WebMvcConfigurer {
         return dataSource;
     }
 
-//    @Bean
+    @Bean(initMethod = "initMethod")
     public IndexService indexService() {
         return new IndexService();
     }

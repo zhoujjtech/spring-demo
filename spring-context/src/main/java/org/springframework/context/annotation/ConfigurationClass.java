@@ -58,11 +58,14 @@ final class ConfigurationClass {
 
 	private final Set<ConfigurationClass> importedBy = new LinkedHashSet<>(1);
 
+	// TODO: 2019-08-05 @Bean
 	private final Set<BeanMethod> beanMethods = new LinkedHashSet<>();
 
+	// TODO: 2019-08-05 @ImportSource
 	private final Map<String, Class<? extends BeanDefinitionReader>> importedResources =
 			new LinkedHashMap<>();
 
+	// TODO: 2019-08-05 @Import
 	private final Map<ImportBeanDefinitionRegistrar, AnnotationMetadata> importBeanDefinitionRegistrars =
 			new LinkedHashMap<>();
 

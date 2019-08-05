@@ -11,8 +11,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-@Component
-public class IndexFactoryBean implements FactoryBean, InitializingBean {
+//@Component
+public class IndexFactoryBean implements FactoryBean {
 
     private Log log = LogFactory.getLog(getClass());
 
@@ -42,8 +42,4 @@ public class IndexFactoryBean implements FactoryBean, InitializingBean {
         return clazz;
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        log.info("afterPropertiesSet..");
-    }
 }

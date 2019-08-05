@@ -14,6 +14,6 @@ public class IndexImportBeanDefinitionRegistrar implements ImportBeanDefinitionR
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(IndexFactoryBean.class);
         AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         beanDefinition.getConstructorArgumentValues().addGenericArgumentValue("com.zhoujjtech.dao.IndexDaoMapper");
-        registry.registerBeanDefinition("indexDaoMapper", beanDefinition);
+        registry.registerBeanDefinition("indexFactoryBean", beanDefinition);
     }
 }
