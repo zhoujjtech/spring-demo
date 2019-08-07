@@ -15,7 +15,7 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // /index.html
         String fileName = req.getRequestURI();
-        // classpath目录
+        // TODO: 2019-08-07 获取ClassPath的根目录路径
         String basePath = IndexServlet.class.getResource("/").getPath();
 
         String path = basePath + fileName;

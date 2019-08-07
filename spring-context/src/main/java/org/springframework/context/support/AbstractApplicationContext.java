@@ -545,31 +545,23 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
-				/**
-				 * todo: 国际化
-				 */
+				// TODO: 2019-08-07 国际化
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
-				/**
-				 * todo:
-				 */
+				// TODO: 2019-08-07 初始化事件委派器, context属性参数
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
-				/**
-				 * todo: 子类扩展
-				 */
+				// TODO: 2019-08-07 子类扩展
 				onRefresh();
 
 				// Check for listener beans and register them.
-				/**
-				 * todo:
-				 */
+				// TODO: 2019-08-07 注册监听器
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
-				// TODO: 2019-08-01 bean的实例化
+				// TODO: 2019-08-01 bean的初始化, 先实例化(包含了调用构造方法 + 依赖注入) + 初始化(后置处理器的调用)
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
