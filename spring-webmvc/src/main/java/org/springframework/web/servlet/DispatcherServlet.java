@@ -494,10 +494,14 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * Initialize the strategy objects that this servlet uses.
 	 * <p>May be overridden in subclasses in order to initialize further strategy objects.
 	 */
+	// TODO: 2019-08-07 核心方法, 初始化策略
 	protected void initStrategies(ApplicationContext context) {
+		// TODO: 2019-08-07 上传的bean 
 		initMultipartResolver(context);
+		// TODO: 2019-08-07
 		initLocaleResolver(context);
 		initThemeResolver(context);
+		// TODO: 2019-08-07 初始化HandlerMapping 2个实例, springboot添加对应的处理静态处理器
 		initHandlerMappings(context);
 		initHandlerAdapters(context);
 		initHandlerExceptionResolvers(context);
@@ -922,6 +926,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		}
 
 		try {
+			// TODO: 2019-08-07 核心方法
 			doDispatch(request, response);
 		}
 		finally {
@@ -959,14 +964,14 @@ public class DispatcherServlet extends FrameworkServlet {
 			try {
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = (processedRequest != request);
-
+				// TODO: 2019-08-07 推断Controller的3种类型 @Controller 对应方法, implements Controller 对应类, 还有一种待确认???
 				// Determine handler for the current request.
 				mappedHandler = getHandler(processedRequest);
 				if (mappedHandler == null) {
 					noHandlerFound(processedRequest, response);
 					return;
 				}
-
+                // TODO: 2019-08-07 HandlerExecutionChain 获取对象或者方法, 用来确认类型, 适配器模式去调用处理
 				// Determine handler adapter for the current request.
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
@@ -982,7 +987,7 @@ public class DispatcherServlet extends FrameworkServlet {
 						return;
 					}
 				}
-
+				// TODO: 2019-08-07 前置处理
 				if (!mappedHandler.applyPreHandle(processedRequest, response)) {
 					return;
 				}
@@ -1180,11 +1185,13 @@ public class DispatcherServlet extends FrameworkServlet {
 	@Nullable
 	protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception {
 		if (this.handlerMappings != null) {
+			// TODO: 2019-08-07 HandlerMapping确定handler的类型通过类名BeanNameUrlHandlerMapping, RequestMappingHandlerMapping
 			for (HandlerMapping hm : this.handlerMappings) {
 				if (logger.isTraceEnabled()) {
 					logger.trace(
 							"Testing handler map [" + hm + "] in DispatcherServlet with name '" + getServletName() + "'");
 				}
+				// TODO: 2019-08-07 把请求发送过去获取到对应过得controller, 通过类名BeanNameUrlHandlerMapping, 或者方法RequestMappingHandlerMapping
 				HandlerExecutionChain handler = hm.getHandler(request);
 				if (handler != null) {
 					return handler;
