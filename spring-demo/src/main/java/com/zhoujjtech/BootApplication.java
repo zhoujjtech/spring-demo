@@ -3,6 +3,8 @@ package com.zhoujjtech;
 import com.zhoujjtech.config.AppConfig;
 import com.zhoujjtech.dao.IndexDaoMapper;
 import com.zhoujjtech.dubbo.consumer.IndexComsumer;
+import com.zhoujjtech.event.ContextRefreshListener;
+import com.zhoujjtech.event.SendEmailEvent;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
@@ -34,7 +36,9 @@ public class BootApplication {
 //        System.out.println(context.getBean(IndexService.class));
 /*        IndexComsumer comsumer = context.getBean(IndexComsumer.class);
         comsumer.sayHello();*/
-        context.start();
+//        context.publishEvent(new SendEmailEvent(context));
+//        context.start();
+//        context.addApplicationListener(new ContextRefreshListener());
     }
 
     public static void runContainer() {
