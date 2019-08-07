@@ -4,19 +4,15 @@ import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import java.util.Random;
 
-
-//@Configuration
-//@EnableDubboConfig
-//@DubboComponentScan(basePackages = "com.zhoujjtech.dubbo")
-//@PropertySource("classpath:/application.properties")
+@Configuration
+@DubboComponentScan(basePackages = "com.zhoujjtech.dubbo")
+@PropertySource("classpath:config/application.properties")
 public class DubboConfig {
 
     @Value("${dubbo.registry.address}")

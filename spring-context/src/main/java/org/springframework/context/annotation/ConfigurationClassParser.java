@@ -185,7 +185,7 @@ class ConfigurationClassParser {
 						"Failed to parse configuration class [" + bd.getBeanClassName() + "]", ex);
 			}
 		}
-		//todo: 处理延迟的@Import
+		// TODO: 2019-08-07 处理延迟的@Import
 		processDeferredImportSelectors();
 	}
 
@@ -279,7 +279,8 @@ class ConfigurationClassParser {
 			}
 		}
 
-		// Process any @ComponentScan annotations, 配置类是否存在ComponentScan注解, 并且进行扫描包目录
+		// Process any @ComponentScan annotations,
+		// TODO: 2019-08-07 配置类是否存在ComponentScan注解, 并且进行扫描包目录
 		Set<AnnotationAttributes> componentScans = AnnotationConfigUtils.attributesForRepeatable(
 				sourceClass.getMetadata(), ComponentScans.class, ComponentScan.class);
 		if (!componentScans.isEmpty() &&
@@ -304,7 +305,7 @@ class ConfigurationClassParser {
 			}
 		}
 
-		// todo: Process any @Import annotations, 1. 普通类, 2.importSelector, 3. importBDregistar
+		// TODO: 2019-08-07  Process any @Import annotations, 1. 普通类, 2.importSelector, 3. importBDregistar
 		processImports(configClass, sourceClass, getImports(sourceClass), true);
 
 		// Process any @ImportResource annotations

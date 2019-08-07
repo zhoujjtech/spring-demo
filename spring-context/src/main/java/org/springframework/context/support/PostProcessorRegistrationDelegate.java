@@ -141,7 +141,7 @@ final class PostProcessorRegistrationDelegate {
 			//==========================================================
 			//进行对postProcessBeanFactory方法的处理
 			// Now, invoke the postProcessBeanFactory callback of all processors handled so far.
-			//处理Full标记的beanDefinition, 进行enhance(增强): 目的:
+			// TODO: 2019-08-07 处理Full标记的beanDefinition, 进行enhance(增强): 目的: 获取bean的时候不会重复创建对象
 			//TODO: 先处理父类, 后处理子类
 			invokeBeanFactoryPostProcessors(registryProcessors, beanFactory);
 			invokeBeanFactoryPostProcessors(regularPostProcessors, beanFactory);
