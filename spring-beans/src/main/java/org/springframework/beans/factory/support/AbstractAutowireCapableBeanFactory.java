@@ -575,6 +575,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		Object exposedObject = bean;
 		try {
 			// TODO: 2019-07-30 属性填充, 也是实例化过程的一部分 instantiation InstantiationAwareBeanPostProcessor中的postProcessPropertyValues
+			//  属性的填充类似栈的执行形式
 			populateBean(beanName, mbd, instanceWrapper);
 			//todo: 初始化的部分, 方法回调
 			exposedObject = initializeBean(beanName, exposedObject, mbd);

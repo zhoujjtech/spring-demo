@@ -1191,7 +1191,8 @@ public class DispatcherServlet extends FrameworkServlet {
 					logger.trace(
 							"Testing handler map [" + hm + "] in DispatcherServlet with name '" + getServletName() + "'");
 				}
-				// TODO: 2019-08-07 把请求发送过去获取到对应过得controller, 通过类名BeanNameUrlHandlerMapping, 或者方法RequestMappingHandlerMapping
+				// TODO: 2019-08-07 把请求发送过去获取到对应过得controller,
+				//  通过类名BeanNameUrlHandlerMapping, 或者方法RequestMappingHandlerMapping
 				HandlerExecutionChain handler = hm.getHandler(request);
 				if (handler != null) {
 					return handler;
