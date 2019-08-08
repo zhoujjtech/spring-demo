@@ -3,10 +3,12 @@ package com.zhoujjtech.service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+//@Scope("prototype")
 @Component("orderService")
 public class OrderService {
 
@@ -16,7 +18,7 @@ public class OrderService {
 ////        log.info("构造方法...");
 //    }
 
-/*    @Autowired
-    private IndexService indexService;*/
+    @Autowired
+    private IndexService indexService;
 
 }

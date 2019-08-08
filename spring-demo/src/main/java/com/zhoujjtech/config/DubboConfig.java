@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 
-@Configuration
+/*@Configuration
 @DubboComponentScan(basePackages = "com.zhoujjtech.dubbo")
-@PropertySource("classpath:config/application.properties")
+@PropertySource("classpath:config/application.properties")*/
 public class DubboConfig {
 
     @Value("${dubbo.registry.address}")

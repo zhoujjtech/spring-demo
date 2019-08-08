@@ -498,7 +498,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	protected void initStrategies(ApplicationContext context) {
 		// TODO: 2019-08-07 上传的bean 
 		initMultipartResolver(context);
-		// TODO: 2019-08-07
+		// TODO: 2019-08-07 国际化
 		initLocaleResolver(context);
 		initThemeResolver(context);
 		// TODO: 2019-08-07 初始化HandlerMapping 2个实例, springboot添加对应的处理静态处理器
@@ -964,15 +964,15 @@ public class DispatcherServlet extends FrameworkServlet {
 			try {
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = (processedRequest != request);
-				// TODO: 2019-08-07 推断Controller的3种类型 @Controller 对应方法, implements Controller 对应类, 还有一种待确认???
 				// Determine handler for the current request.
+				// TODO: 2019-08-07 推断Controller的3种类型 @Controller 对应方法, implements Controller 对应类, HttpRequestHandler
 				mappedHandler = getHandler(processedRequest);
 				if (mappedHandler == null) {
 					noHandlerFound(processedRequest, response);
 					return;
 				}
-                // TODO: 2019-08-07 HandlerExecutionChain 获取对象或者方法, 用来确认类型, 适配器模式去调用处理
 				// Determine handler adapter for the current request.
+				// TODO: 2019-08-07 HandlerExecutionChain 获取对象或者方法, 用来确认类型, 适配器模式去调用处理
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
 				// Process last-modified header, if supported by the handler.

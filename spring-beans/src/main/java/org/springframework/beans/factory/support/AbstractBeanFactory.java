@@ -171,6 +171,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	private final Set<String> alreadyCreated = Collections.newSetFromMap(new ConcurrentHashMap<>(256));
 
 	/** Names of beans that are currently in creation */
+	// TODO: 2019-08-08 基于ThreadLocal存储
 	private final ThreadLocal<Object> prototypesCurrentlyInCreation =
 			new NamedThreadLocal<>("Prototype beans currently in creation");
 
@@ -257,7 +258,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		// Eagerly check singleton ca che for manually registered singletons.
 		// TODO: 2019-08-01 这个地方会使用到 singletonsCurrentlyInCreation 和 singletonFactories
 		//  设置完毕之后就会把singletonFactories中的beanName移除, 添加到 earlySingletonObjects 中去
-		//  起到了解决属性循环引用的问题
+		//  起到了解决属性循环引用的问题, 只针对于Singleton, prototype不满足要求
  		Object sharedInstance = getSingleton(beanName);
 		if (sharedInstance != null && args == null) {
 			if (logger.isDebugEnabled()) {
@@ -276,7 +277,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		else {
 			// Fail if we're already creating this bean instance:
 			// We're assumably within a circular reference.
-			// TODO: 2019-08-01 理论上不存在
+			// TODO: 2019-08-08 针对于prototype的循环依赖, 会进行报错
 			if (isPrototypeCurrentlyInCreation(beanName)) {
 				throw new BeanCurrentlyInCreationException(beanName);
 			}

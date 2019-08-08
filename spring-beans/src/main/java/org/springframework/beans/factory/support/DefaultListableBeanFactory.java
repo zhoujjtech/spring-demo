@@ -810,6 +810,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 						"Cannot register bean definition [" + beanDefinition + "] for bean '" + beanName +
 						"': There is already [" + existingDefinition + "] bound.");
 			}
+			// TODO: 2019-08-08 后者的角色权限大于已经存在的就会进行替换
 			else if (existingDefinition.getRole() < beanDefinition.getRole()) {
 				// e.g. was ROLE_APPLICATION, now overriding with ROLE_SUPPORT or ROLE_INFRASTRUCTURE
 				if (logger.isWarnEnabled()) {

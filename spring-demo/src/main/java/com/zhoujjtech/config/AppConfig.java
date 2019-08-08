@@ -61,7 +61,8 @@ public class AppConfig implements WebMvcConfigurer {
         return dataSource;
     }
 
-    @Bean(initMethod = "initMethod")
+
+//    @Bean(initMethod = "initMethod")
     public IndexService indexService() {
         return new IndexService();
     }

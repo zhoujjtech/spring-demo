@@ -34,7 +34,7 @@ public class BootApplication {
 //        context.addBeanFactoryPostProcessor(new IndexBeanFactoryPostProcessor());
         context.refresh();
 //        context.scan("com.zhoujjtech");
-//        Object bean = context.getBean("indexFactoryBean");
+        System.out.println(context.getBean("indexService"));
 //        System.out.println(bean.toString());
 //        System.out.println(context.getBean(IndexService.class));
 /*        IndexComsumer comsumer = context.getBean(IndexComsumer.class);
@@ -68,7 +68,7 @@ public class BootApplication {
             // TODO: 2019-08-07 spring web环境
             DispatcherServlet dispatcherServlet = new DispatcherServlet(context);
             // TODO: 2019-08-07 调用Servlet的init方法
-            tomcat.addServlet(ct, "mvc", dispatcherServlet).setLoadOnStartup(0);
+            tomcat.addServlet(ct, "mvc", dispatcherServlet).setLoadOnStartup(1);
             ct.addServletMapping("/*", "mvc");
             tomcat.start();
         } catch (LifecycleException e) {
