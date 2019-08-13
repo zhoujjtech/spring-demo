@@ -2,6 +2,9 @@ package com.zhoujjtech.config;
 
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.mysql.jdbc.Driver;
 import com.zhoujjtech.annotation.EnableDone;
 import com.zhoujjtech.service.IndexService;
@@ -14,14 +17,23 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.bind.support.WebBindingInitializer;
+import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @ComponentScan("com.zhoujjtech")
@@ -29,17 +41,30 @@ import javax.sql.DataSource;
 //@EnableAspectJAutoProxy
 //@EnableDone("com.zhoujjtech.dao")
 //@EnableWebMvc
-public class AppConfig implements WebMvcConfigurer {
+public class AppConfig {
 
     private Log log = LogFactory.getLog(getClass());
 
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
-        internalResourceViewResolver.setPrefix("/");
-        internalResourceViewResolver.setSuffix(".html");
-        registry.viewResolver(internalResourceViewResolver);
+    @Bean
+    public HandlerAdapter handlerAdapter(){
+
+        List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+        //注入FastJSON
+        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
+        List<MediaType> supportedMediaTypes = new ArrayList<>();
+        supportedMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        supportedMediaTypes.add(MediaType.APPLICATION_FORM_URLENCODED);
+        supportedMediaTypes.add(MediaType.TEXT_HTML);
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes );
+        messageConverters.add(fastJsonHttpMessageConverter);
+        RequestMappingHandlerAdapter requestMappingHandlerAdapter = new RequestMappingHandlerAdapter();
+        //参数及返回值处理
+        requestMappingHandlerAdapter.setMessageConverters(messageConverters);
+        //参数校验
+//        requestMappingHandlerAdapter.setWebBindingInitializer(webBindingInitializer);
+        return requestMappingHandlerAdapter;
     }
+
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
@@ -60,6 +85,7 @@ public class AppConfig implements WebMvcConfigurer {
         dataSource.setPassword("123456");
         return dataSource;
     }
+
 
 
 //    @Bean(initMethod = "initMethod")

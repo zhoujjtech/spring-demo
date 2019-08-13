@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.springframework.context.annotation.aspectj.AnnotationBeanConfigurerTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-13T04:30:51" hostname="zhoujiajundeMacBook-Pro.local" time="0.043">
+  <properties/>
+  <testcase name="injection" classname="org.springframework.context.annotation.aspectj.AnnotationBeanConfigurerTests" time="0.043"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
