@@ -17,9 +17,11 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.support.WebBindingInitializer;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.ViewResolver;
@@ -36,11 +38,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+// TODO: 2019-08-21 扫描的类直接添加到beanDefiniation中去
 @ComponentScan("com.zhoujjtech")
 //@MapperScan("com.zhoujjtech.dao")
-//@EnableAspectJAutoProxy
-//@EnableDone("com.zhoujjtech.dao")
+//@EnableAspectJAutoProxy //支持aspectj的语法
+@EnableDone("com.zhoujjtech.dao")
 //@EnableWebMvc
+//@EnableTransactionManagement
 public class AppConfig {
 
     private Log log = LogFactory.getLog(getClass());

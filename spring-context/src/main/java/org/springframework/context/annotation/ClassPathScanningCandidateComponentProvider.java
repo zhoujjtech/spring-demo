@@ -496,7 +496,9 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 			}
 		}
 		for (TypeFilter tf : this.includeFilters) {
+			// TODO: 2019-08-21 scan进行匹配, 默认的为@Component
 			if (tf.match(metadataReader, getMetadataReaderFactory())) {
+				// TODO: 2019-08-21 这个地方匹配的是@Conditional, 进行条件注入
 				return isConditionMatch(metadataReader);
 			}
 		}

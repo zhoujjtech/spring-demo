@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Scope("prototype")
-@Component("indexService")
+//@Scope("prototype")
+//@Component("indexService")
 public class IndexService implements InitializingBean {
 
     private Log log = LogFactory.getLog(IndexService.class.getName());

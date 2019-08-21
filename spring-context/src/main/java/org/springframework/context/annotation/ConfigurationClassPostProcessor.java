@@ -335,6 +335,7 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 						this.importBeanNameGenerator, parser.getImportRegistry());
 			}
 			// TODO: 2019-08-05 扫描出的是以类为单位的configClassses, 然后再对每个扫描出来的类进行解析, beanName相同的bd可以被覆盖
+			//  扫描的类会直接加入到BD中, 实现了ImportSelector也会加入
 			this.reader.loadBeanDefinitions(configClasses);
 			alreadyParsed.addAll(configClasses);
 

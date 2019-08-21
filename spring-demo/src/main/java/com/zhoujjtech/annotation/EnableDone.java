@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(IndexImportBeanDefinitionRegistrar.class)
+@Import(IndexImportSelector.class)
 public @interface EnableDone {
 
     String value() default "";
