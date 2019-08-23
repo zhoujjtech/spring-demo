@@ -565,6 +565,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
+				// TODO: 2019-08-23 会发送ContextRefreshedEvent消息
 				finishRefresh();
 			}
 
