@@ -38,13 +38,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-// TODO: 2019-08-21 扫描的类直接添加到beanDefiniation中去
 @ComponentScan("com.zhoujjtech")
 //@MapperScan("com.zhoujjtech.dao")
 //@EnableAspectJAutoProxy //支持aspectj的语法
 @EnableDone("com.zhoujjtech.dao")
 //@EnableWebMvc
 //@EnableTransactionManagement
+// TODO: 2019-08-23
+//  @Configuration, @ComponentScan, @Component, @Import, @ImportSource
+//  1. 有这些注解的类都表示ConfigurationClass[其中的@ComponentScan, @Component, @Import(ImportSelector.class)会在生成ConfigurationClass时候就会添加到BeanDefeniations中去]
+//  2. @Import(ImportBeanDefinitionRegistrar.class), @ImportSource, @Bean 后面紧接着处理
 public class AppConfig {
 
     private Log log = LogFactory.getLog(getClass());
