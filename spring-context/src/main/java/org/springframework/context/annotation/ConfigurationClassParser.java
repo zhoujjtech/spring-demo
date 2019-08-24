@@ -594,6 +594,7 @@ class ConfigurationClassParser {
 		return group;
 	}
 
+	// TODO: 2019-08-24 
 	private void processImports(ConfigurationClass configClass, SourceClass currentSourceClass,
 			Collection<SourceClass> importCandidates, boolean checkForCircularImports) {
 
@@ -608,13 +609,14 @@ class ConfigurationClassParser {
 			this.importStack.push(configClass);
 			try {
 				for (SourceClass candidate : importCandidates) {
+					// TODO: 2019-08-24 ImportSelector会对导入的类进行递归调用, 区分 普通类 于 ImportBeanDefinitionRegistrar 类型
 					if (candidate.isAssignable(ImportSelector.class)) {
 						// Candidate class is an ImportSelector -> delegate to it to determine imports
 						Class<?> candidateClass = candidate.loadClass();
 						ImportSelector selector = BeanUtils.instantiateClass(candidateClass, ImportSelector.class);
 						ParserStrategyUtils.invokeAwareMethods(
 								selector, this.environment, this.resourceLoader, this.registry);
-//						todo: 处理延迟导入, springboot的自动装配就是延迟处理
+						// TODO: 2019-08-24 处理延迟导入, springboot的自动装配就是延迟处理
 						if (this.deferredImportSelectors != null && selector instanceof DeferredImportSelector) {
 							this.deferredImportSelectors.add(
 									new DeferredImportSelectorHolder(configClass, (DeferredImportSelector) selector));
