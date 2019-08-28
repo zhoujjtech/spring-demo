@@ -219,6 +219,8 @@ class ConfigurationClassParser {
 
 
 	protected void processConfigurationClass(ConfigurationClass configClass) throws IOException {
+
+		// TODO: 2019-08-28 优先过滤不符条件的Bean注册 @Conditional
 		if (this.conditionEvaluator.shouldSkip(configClass.getMetadata(), ConfigurationPhase.PARSE_CONFIGURATION)) {
 			return;
 		}
@@ -258,15 +260,16 @@ class ConfigurationClassParser {
 	 * @param sourceClass a source class
 	 * @return the superclass, or {@code null} if none found or previously processed
 	 */
+	// TODO: 2019-08-28 处理类的加载顺序:
+	//  内部类 --> @PropertySources --> @ComponentScan --> @Import --> @ImportResource --> @Bean
 	@Nullable
 	protected final SourceClass doProcessConfigurationClass(ConfigurationClass configClass, SourceClass sourceClass)
 			throws IOException {
 
-		// Recursively process any member (nested) classes first
-		//处理内部类
+		// TODO: 2019-08-28 处理内部类
 		processMemberClasses(configClass, sourceClass);
 
-		// Process any @PropertySource annotations
+		// TODO: 2019-08-28 @PropertySource
 		for (AnnotationAttributes propertySource : AnnotationConfigUtils.attributesForRepeatable(
 				sourceClass.getMetadata(), PropertySources.class,
 				org.springframework.context.annotation.PropertySource.class)) {
@@ -279,7 +282,6 @@ class ConfigurationClassParser {
 			}
 		}
 
-		// Process any @ComponentScan annotations,
 		// TODO: 2019-08-07 配置类是否存在ComponentScan注解, 并且进行扫描包目录
 		Set<AnnotationAttributes> componentScans = AnnotationConfigUtils.attributesForRepeatable(
 				sourceClass.getMetadata(), ComponentScans.class, ComponentScan.class);
@@ -305,10 +307,10 @@ class ConfigurationClassParser {
 			}
 		}
 
-		// TODO: 2019-08-07  Process any @Import annotations, 1. 普通类, 2.importSelector, 3. importBDregistar
+		// TODO: 2019-08-07 @Import  1. 普通类, 2.importSelector(会重新分成1, 3进行处理, 特殊的存在), 3. importBDregistar
 		processImports(configClass, sourceClass, getImports(sourceClass), true);
 
-		// Process any @ImportResource annotations
+		// TODO: 2019-08-28  @ImportResource
 		AnnotationAttributes importResource =
 				AnnotationConfigUtils.attributesFor(sourceClass.getMetadata(), ImportResource.class);
 		if (importResource != null) {
@@ -320,13 +322,13 @@ class ConfigurationClassParser {
 			}
 		}
 
-		// Process individual @Bean methods
+		// TODO: 2019-08-28 @Bean methods
 		Set<MethodMetadata> beanMethods = retrieveBeanMethodMetadata(sourceClass);
 		for (MethodMetadata methodMetadata : beanMethods) {
 			configClass.addBeanMethod(new BeanMethod(methodMetadata, configClass));
 		}
 
-		// Process default methods on interfaces
+		// TODO: 2019-08-28 针对于1.8+ default方法中的@Bean
 		processInterfaces(configClass, sourceClass);
 
 		// Process superclass, if any
@@ -548,6 +550,7 @@ class ConfigurationClassParser {
 
 	private void processDeferredImportSelectors() {
 		List<DeferredImportSelectorHolder> deferredImports = this.deferredImportSelectors;
+		// TODO: 2019-08-28 自空再处理Import, 进入else分支, 设置为null就是切断了引用和对象的关系
 		this.deferredImportSelectors = null;
 		if (deferredImports == null) {
 			return;

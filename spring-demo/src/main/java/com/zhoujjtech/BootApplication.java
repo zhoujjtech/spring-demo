@@ -22,8 +22,8 @@ import java.io.File;
 public class BootApplication {
 
     public static void main(String[] args) {
-//        runContext();
-        runContainer();
+        runContext();
+//        runContainer();
         ///Users/zhoujiajun/Documents/spring-demo/spring-demo/out/production/classes/
 //        System.out.println(BootApplication.class.getResource("/").getPath() );
     }

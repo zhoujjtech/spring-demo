@@ -65,7 +65,7 @@ final class ConfigurationClass {
 	private final Map<String, Class<? extends BeanDefinitionReader>> importedResources =
 			new LinkedHashMap<>();
 
-	// TODO: 2019-08-05 @Import
+	// TODO: 2019-08-05 @Import(ImportBeanDefinitionRegistrar.class)
 	private final Map<ImportBeanDefinitionRegistrar, AnnotationMetadata> importBeanDefinitionRegistrars =
 			new LinkedHashMap<>();
 

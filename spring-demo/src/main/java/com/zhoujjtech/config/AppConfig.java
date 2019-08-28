@@ -52,6 +52,11 @@ public class AppConfig {
 
     private Log log = LogFactory.getLog(getClass());
 
+    @Configuration
+    public class ChildConfig {
+
+    }
+
     @Bean
     public HandlerAdapter handlerAdapter(){
 

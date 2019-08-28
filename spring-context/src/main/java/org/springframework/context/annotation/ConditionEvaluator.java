@@ -98,7 +98,7 @@ class ConditionEvaluator {
 				conditions.add(condition);
 			}
 		}
-
+		// TODO: 2019-08-28 条件取出来进行排序
 		AnnotationAwareOrderComparator.sort(conditions);
 
 		for (Condition condition : conditions) {
@@ -106,7 +106,7 @@ class ConditionEvaluator {
 			if (condition instanceof ConfigurationCondition) {
 				requiredPhase = ((ConfigurationCondition) condition).getConfigurationPhase();
 			}
-			// TODO: 2019-08-21 不匹配就跳过, 不然容器进行管理
+			// TODO: 2019-08-21 不匹配就跳过, 不让容器进行管理
 			if ((requiredPhase == null || requiredPhase == phase) && !condition.matches(this.context, metadata)) {
 				return true;
 			}
