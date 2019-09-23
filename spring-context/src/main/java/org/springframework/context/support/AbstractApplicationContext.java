@@ -553,7 +553,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
-				// TODO: 2019-08-07 子类扩展
+				// TODO: 2019-08-07 子类扩展(springboot实例化容器对象)
 				onRefresh();
 
 				// Check for listener beans and register them.

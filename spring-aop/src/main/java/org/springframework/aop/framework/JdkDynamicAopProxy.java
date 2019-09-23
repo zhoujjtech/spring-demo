@@ -183,6 +183,8 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 
 			if (this.advised.exposeProxy) {
 				// Make invocation available if necessary.
+				// TODO: 2019-09-21 目的就是为了在代理方法中调用代理方法能起到作用
+				//  (代理方法中调用方法, 表示代理对象调用目标对象的方法)
 				oldProxy = AopContext.setCurrentProxy(proxy);
 				setProxyContext = true;
 			}

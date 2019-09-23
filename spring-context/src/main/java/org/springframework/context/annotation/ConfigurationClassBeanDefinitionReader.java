@@ -177,6 +177,7 @@ class ConfigurationClassBeanDefinitionReader {
 		MethodMetadata metadata = beanMethod.getMetadata();
 		String methodName = metadata.getMethodName();
 
+		// TODO: 2019-08-30 会对注解再@Bean上的@Conditional进行过滤操作
 		// Do we need to mark the bean as skipped by its condition?
 		if (this.conditionEvaluator.shouldSkip(metadata, ConfigurationPhase.REGISTER_BEAN)) {
 			configClass.skippedBeanMethods.add(methodName);

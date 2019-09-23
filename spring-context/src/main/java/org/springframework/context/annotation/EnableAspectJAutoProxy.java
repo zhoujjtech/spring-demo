@@ -134,6 +134,7 @@ public @interface EnableAspectJAutoProxy {
 	 * Off by default, i.e. no guarantees that {@code AopContext} access will work.
 	 * @since 4.3.1
 	 */
+	// TODO: 2019-09-21 暴露代理对象到ThreadLocal中去
 	boolean exposeProxy() default false;
 
 }

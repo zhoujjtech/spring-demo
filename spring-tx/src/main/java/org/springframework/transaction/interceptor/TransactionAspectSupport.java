@@ -284,6 +284,8 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 		final PlatformTransactionManager tm = determineTransactionManager(txAttr);
 		final String joinpointIdentification = methodIdentification(method, targetClass, txAttr);
 
+		// TODO: 2019-09-21 事务处理的开启事务, 提交/回滚事务
+		//  声明试事务
 		if (txAttr == null || !(tm instanceof CallbackPreferringPlatformTransactionManager)) {
 			// Standard transaction demarcation with getTransaction and commit/rollback calls.
 			TransactionInfo txInfo = createTransactionIfNecessary(tm, txAttr, joinpointIdentification);
@@ -292,20 +294,23 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 			try {
 				// This is an around advice: Invoke the next interceptor in the chain.
 				// This will normally result in a target object being invoked.
+				// TODO: 2019-09-21 执行目标方法
 				retVal = invocation.proceedWithInvocation();
 			}
 			catch (Throwable ex) {
 				// target invocation exception
+				// TODO: 2019-09-21 回滚事务
 				completeTransactionAfterThrowing(txInfo, ex);
 				throw ex;
 			}
 			finally {
 				cleanupTransactionInfo(txInfo);
 			}
+			// TODO: 2019-09-21 提交事务
 			commitTransactionAfterReturning(txInfo);
 			return retVal;
 		}
-
+		// TODO: 2019-09-21 编程试事务
 		else {
 			final ThrowableHolder throwableHolder = new ThrowableHolder();
 

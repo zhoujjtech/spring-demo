@@ -33,7 +33,7 @@ public class DefaultTransactionAttribute extends DefaultTransactionDefinition im
 
 	@Nullable
 	private String qualifier;
-
+	// TODO: 2019-09-21 对应的方法全名称
 	@Nullable
 	private String descriptor;
 
