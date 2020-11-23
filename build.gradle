@@ -1,12 +1,17 @@
 buildscript {
 	repositories {
-		maven { url "https://repo.spring.io/plugins-release" }
+		// maven { url "https://repo.spring.io/plugins-release" }
+//		maven { url "http://artifactory.jd.com/libs-releases" }
+		maven { url "https://maven.aliyun.com/repository/public/" }
+		maven { url "https://maven.aliyun.com/repository/spring/" }
+		maven { url "https://maven.aliyun.com/repository/spring-plugin/" }
+		maven { url "https://maven.aliyun.com/repository/gradle-plugin/" }
 	}
 	dependencies {
 		classpath("io.spring.gradle:propdeps-plugin:0.0.9.RELEASE")
 		classpath("io.spring.gradle:docbook-reference-plugin:0.3.1")
-		classpath("org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16")
-		classpath("org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.7")
+//		classpath("org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16")
+//		classpath("org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.7")
 	}
 }
 
@@ -45,7 +50,7 @@ ext {
 	junitJupiterVersion  = "5.0.3"
 	junitPlatformVersion = "1.0.3"
 	junitVintageVersion  = "4.12.3"
-	kotlinVersion        = "1.2.71"
+	kotlinVersion        = "1.3.11"
 	log4jVersion         = "2.11.2"
 	nettyVersion         = "4.1.37.Final"
 	reactorVersion       = "Bismuth-SR17"
@@ -151,7 +156,16 @@ configure(allprojects) { project ->
 	}
 
 	repositories {
-		maven { url "https://repo.spring.io/libs-release" }
+//        maven { url "https://repo.spring.io/libs-release" }
+//        mavenLocal()
+		//新增以下2个阿里云镜像
+		maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+		maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+		mavenCentral()
+		maven { url "https://repo.spring.io/libs-spring-framework-build" }
+		maven { url "https://repo.spring.io/milestone" } // Reactor
+		//新增spring插件库
+		maven { url "https://repo.spring.io/plugins-release" }
 	}
 
 	dependencies {
